@@ -1,21 +1,29 @@
 <template>
   <div id="app">
+    <Header></Header>
     <img src="./assets/logo.png">
     <div class="demo-input-size">
       <el-button type="primary" @click="getBookByPubName">查书（出版社）</el-button>
       <el-input id="pubName" size="mini" v-model="publisherName" placeholder="请输入出版社名"></el-input>
     </div>
     <router-view/>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 export default {
   name: 'App',
   data () {
     return {
       publisherName: ''
     }
+  },
+  components: {
+    Header,
+    Footer
   },
   methods: {
     getBookByPubName: function () {
@@ -42,7 +50,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 #pubName {
   width: 300px;
