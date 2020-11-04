@@ -20,7 +20,7 @@ const queryByClazz =
 
 /**
  * @author:lqz
- * @description:根据类型查询图书
+ * @description:更新图书
  */
 const updateBook =
   'UPDATE book ' +

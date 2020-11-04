@@ -38,7 +38,31 @@ async function borrowBook (bookId, userId) {
   return result
 }
 
+/**
+ * @author lqz
+ * @description 根据类型获取图书
+ * @param  (clazz)
+ * @returns 查询图书结果
+ */
+const getBookByclazz = function (clazz) {
+  return mysql.query(sql.queryByClazz, [clazz])
+}
+
+/**
+ * @author lqz
+ * @description 更新图书id和类型id
+ * @param  (book)
+ * @returns 
+ */
+const updateBook = function (book) {
+  return mysql.query(sql.updateBook,
+    [book.name, book.number, book.author,
+      book.digest, book.cover, book.publisher_id, book.clazz_id, book.id])
+}
+
 module.exports = {
   getBookByPublisher,
-  borrowBook
+  borrowBook,
+  getBookByclazz,
+  updateBook
 }
