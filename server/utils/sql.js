@@ -8,9 +8,31 @@ const queryByPublisher =
 const queryBookNumber = 'select number from book where id = ?'
 const insertBorrow = 'insert into `borrow` (book_id, user_id, borrow_date) values (?,?,?)'
 const updateBook = 'update book set number=number-1 where id = ?'
+
+/**
+ * @author:lqz
+ * @description:根据类型查询图书
+ */
+const queryByClazz =
+  'SELECT b.id, b.name, b.number, b.author, b.digest, b.cover, p.name as publisher, c.name as clazz ' +
+  'FROM book b,publisher p,clazz c ' +
+  'WHERE b.publisher_id = p.id and b.clazz_id = c.id and c.name = ? and b.exist = 1'
+
+/**
+ * @author:lqz
+ * @description:根据类型查询图书
+ */
+const updateBook =
+  'UPDATE book ' +
+  'SET name=?,number=?,author=?,digest=?,cover=?,publisher_id=?,clazz_id=? ' +
+  'WHERE book.id = ?'
+
 module.exports = {
   queryByPublisher,
   queryBookNumber,
   insertBorrow,
-  updateBook
+  updateBook,
+  queryByClazz
 }
+
+
