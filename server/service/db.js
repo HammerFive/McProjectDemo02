@@ -27,7 +27,7 @@ async function borrowBook (bookId, userId) {
     const date = new Date().toLocaleDateString()
     await mysql.query(sql.insertBorrow, [bookId, userId, date])
       .then(async (data) => {
-        await mysql.query(sql.updateBook, [bookId])
+        await mysql.query(sql.updateBookNumber, [bookId])
         result = { msg: 'borrow book succeed', code: 1 }
       })
       .catch((error) => {
@@ -59,10 +59,36 @@ const updateBook = function (book) {
     [book.name, book.number, book.author,
       book.digest, book.cover, book.publisher_id, book.clazz_id, book.id])
 }
+      
+/*
+* @function 获取图书信息
+* @description 根据书名获取图书
+* @param bookName
+* @return bookList
+* @author Wang Ying 4/11/2020
+ */
+const getBookByName = function (bookName) {
+  return mysql.query(sql.queryByName, [bookName])
+}
+
+/**
+* @function 更新图书信息
+* @description 添加图书
+* @param book
+* @return successmessage
+* @author Wang Ying 4/11/2020
+ */
+const addBook = function (book) {
+  return mysql.query(sql.addBook,
+    [book.name, book.publisher_id, book.clazz_id, book.number,
+      book.author, 1, book.digest, book.cover])
+}
 
 module.exports = {
   getBookByPublisher,
   borrowBook,
   getBookByclazz,
-  updateBook
+  updateBook,
+  getBookByName,
+  addBook
 }
