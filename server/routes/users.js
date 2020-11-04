@@ -6,7 +6,7 @@ router.get('/', function (ctx, next) {
   ctx.body = 'this is a users response!'
 })
 /**
- *  author:
+ *  author:hjgjgjh
  *  name :
  */
 router.get('/books/publisher', async ctx => {
@@ -14,7 +14,7 @@ router.get('/books/publisher', async ctx => {
   console.log(publisherName)
   const obj = {}
   obj.boos = await dbService.getBookByPublisher(publisherName)
-  obj.code = 1
+  obj.code = 
   ctx.response.body = obj
 })
 
