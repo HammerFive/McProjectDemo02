@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header></Header>
-    <router-view/>
+    <div class="main">
+      <router-view/>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -45,6 +47,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.main {
+  height:550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #pubName {
   width: 300px;

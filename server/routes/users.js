@@ -9,22 +9,21 @@ router.get('/', function (ctx, next) {
 /**
  * 查询书籍：根据出版社
  */
-router.get('/books/publisher', async ctx => {
-  const publisherName = ctx.request.query.publisherName
-  console.log(publisherName)
-  const obj = {}
-  obj.books = await dbService.getBookByPublisher(publisherName)
-  obj.code = 1
-  ctx.response.body = obj
+router.get('/book/publisher', async ctx => {
+  const books =
+    await dbService.getBookByPublisher(ctx.request.query.publisherName)
+  ctx.response.body = {
+    books,
+    code: 1
+  }
 })
 
 /**
  * 借书
  */
-router.post('/books/borrow', async ctx => {
-  const obj = ctx.request.body
-  const result = await dbService.borrowBook(obj.bookId, obj.userId)
-  ctx.response.body = result
+router.post('/book/reservation', async ctx => {
+  const { bookId, userId } = ctx.request.body
+  ctx.body = await dbService.borrowBook(bookId, userId)
 })
 
 /**
@@ -33,7 +32,7 @@ router.post('/books/borrow', async ctx => {
  * @returns
  * @description 根据类型获取图书
  */
-router.get('/books/clazz', async ctx => {
+router.get('/book/category', async ctx => {
   const clazz = ctx.query.clazz
 
   console.log(clazz)
@@ -49,7 +48,8 @@ router.get('/books/clazz', async ctx => {
  *  author:wy
  *  name : getBookByName
  */
-router.get('/book', async (ctx) => {
+
+router.get('/book/bookName', async (ctx) => {
   const bookname = ctx.query.name
   console.log(bookname)
   const results = await dbService.getBookByName(bookname)
@@ -66,7 +66,7 @@ router.get('/book', async (ctx) => {
  * @returns
  * @description 更新图书
  */
-router.post('/bookupdate', async ctx => {
+router.put('/book', async ctx => {
   let book = {}
 
   book = ctx.request.body
@@ -81,7 +81,7 @@ router.post('/bookupdate', async ctx => {
  *  author:wy
  *  name : bookadd
  */
-router.post('/bookadd', async (ctx) => {
+router.post('/book', async (ctx) => {
   console.log(ctx.request.body)
   const bookname = ctx.request.body.name
   const book = ctx.request.body
@@ -104,4 +104,17 @@ router.post('/bookadd', async (ctx) => {
   } else ctx.response.body = JSON.stringify(obj)
 })
 
+/**
+ * author: cxw
+ * descirption: get user by id
+ */
+router.get('/user', async ctx => {
+  const userId = ctx.request.query.userId
+  const userInfo = await dbService.getUserInfo(userId)
+  const result = { userInfo, code: 0 }
+  if (userInfo.length !== 0) {
+    result.code = 1
+  }
+  ctx.response.body = result
+})
 module.exports = router
