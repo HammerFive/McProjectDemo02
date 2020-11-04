@@ -37,7 +37,12 @@ router.get('/books/clazz', async ctx => {
   console.log(clazz)
 
   const results = await dbService.getBookByclazz(clazz)
+  const obj = {}
+  obj.data = results
+  obj.code = 1
+  ctx.response.body = obj
 })
+
 /*
  *  author:wy
  *  name : getBookByName
