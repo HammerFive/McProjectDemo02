@@ -5,6 +5,7 @@ router.prefix('/users')
 router.get('/', function (ctx, next) {
   ctx.body = 'this is a users response!'
 })
+
 /**
  * 查询书籍：根据出版社
  */
@@ -16,6 +17,7 @@ router.get('/books/publisher', async ctx => {
   obj.code = 1
   ctx.response.body = obj
 })
+
 /**
  * 借书
  */
@@ -47,7 +49,6 @@ router.get('/books/clazz', async ctx => {
  *  author:wy
  *  name : getBookByName
  */
-
 router.get('/book', async (ctx) => {
   const bookname = ctx.query.name
   console.log(bookname)
