@@ -7,10 +7,10 @@ const queryByPublisher =
 // 根据图书id和用户id借书
 const queryBookNumber = 'select number from book where id = ?'
 const insertBorrow = 'insert into `borrow` (book_id, user_id, borrow_date) values (?,?,?)'
-const updateBook = 'update book set number=number-1 where id = ?'
+const updateBookNumber = 'update book set number=number-1 where id = ?'
 module.exports = {
   queryByPublisher,
   queryBookNumber,
   insertBorrow,
-  updateBook
+  updateBookNumber
 }

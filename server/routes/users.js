@@ -6,8 +6,7 @@ router.get('/', function (ctx, next) {
   ctx.body = 'this is a users response!'
 })
 /**
- *  author:
- *  name :
+ * 查询书籍：根据出版社
  */
 router.get('/books/publisher', async ctx => {
   const publisherName = ctx.request.query.publisherName
@@ -17,7 +16,9 @@ router.get('/books/publisher', async ctx => {
   obj.code = 1
   ctx.response.body = obj
 })
-
+/**
+ * 借书
+ */
 router.post('/books/borrow', async ctx => {
   const obj = ctx.request.body
   const result = await dbService.borrowBook(obj.bookId, obj.userId)
