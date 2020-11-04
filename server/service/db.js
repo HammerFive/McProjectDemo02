@@ -27,7 +27,7 @@ async function borrowBook (bookId, userId) {
     const date = new Date().toLocaleDateString()
     await mysql.query(sql.insertBorrow, [bookId, userId, date])
       .then(async (data) => {
-        await mysql.query(sql.updateBook, [bookId])
+        await mysql.query(sql.updateBookNumber, [bookId])
         result = { msg: 'borrow book succeed', code: 1 }
       })
       .catch((error) => {
