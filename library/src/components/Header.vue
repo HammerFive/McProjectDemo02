@@ -3,14 +3,14 @@
     <router-link to="/">
       <el-image
       style="width: 100px; height: 100px; float:left"
-      :src="url"></el-image>
+      :src="url" @click="clearActive"></el-image>
     </router-link>
       <Search style="float: left"></Search>
-    <el-menu style="float:left" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1"><router-link to="/search">查询</router-link></el-menu-item>
-      <el-menu-item index="2"><router-link to="/books">书库</router-link></el-menu-item>
-      <el-menu-item index="3"><router-link to="/manage">管理</router-link></el-menu-item>
-      <el-menu-item index="4"><router-link to="/borrow">借书</router-link></el-menu-item>
+    <el-menu id="navMenu" style="float:left" :default-active="this.$router.path" router class="el-menu-demo" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="/search">查询</el-menu-item>
+      <el-menu-item index="/books">书库</el-menu-item>
+      <el-menu-item index="/manage">管理</el-menu-item>
+      <el-menu-item index="/borrow">借书</el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -31,6 +31,14 @@ export default {
   },
   methods: {
     handleSelect (key, keyPath) {
+    },
+    clearActive () {
+      const nav = document.querySelectorAll('#navMenu > li')
+      for (const li of nav) {
+        if (li.classList.length === 2) {
+          li.classList.remove('is-active')
+        }
+      }
     }
   }
 }
