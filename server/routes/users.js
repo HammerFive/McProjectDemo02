@@ -33,10 +33,9 @@ router.post('/books/borrow', async ctx => {
  */
 router.get('/books/clazz', async ctx => {
   const clazz = ctx.query.clazz
-
   console.log(clazz)
-
   const results = await dbService.getBookByclazz(clazz)
+  ctx.response.body = results
 })
 /*
  *  author:wy
@@ -53,7 +52,6 @@ router.get('/book', async (ctx) => {
   obj.code = 1
   ctx.response.body = obj
 })
-
 
 /**
  * @author lqz
@@ -72,7 +70,7 @@ router.post('/bookupdate', async ctx => {
   }
 })
 
-  /*
+/*
  *  author:wy
  *  name : bookadd
  */

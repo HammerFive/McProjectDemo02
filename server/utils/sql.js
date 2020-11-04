@@ -13,6 +13,7 @@ const queryByPublisher =
  */
 const queryBookNumber = 'select number from book where id = ?'
 const insertBorrow = 'insert into `borrow` (book_id, user_id, borrow_date) values (?,?,?)'
+const updateBookNumber = 'update book set number=number-1 where id = ?'
 
 // 根据书名查询图书信息 wy
 const queryByName =
@@ -23,8 +24,6 @@ const queryByName =
 // 添加图书 wy
 const addBook =
   'INSERT INTO `Book`(name,publisher_id,clazz_id,number,author,exist,digest,cover)VALUES(?,?,?,?,?,?,?,?)'
-  
-const updateBookNumber = 'update book set number=number-1 where id = ?'
 
 /**
  * @author:lqz
