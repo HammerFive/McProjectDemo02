@@ -9,7 +9,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="">
-        <el-input v-model="formInline.searchName" prefix-icon="el-icon-search"></el-input>
+        <el-input v-model="formInline.searchName" @keyup.enter.native="search" prefix-icon="el-icon-search"></el-input>
       </el-form-item>
     </el-form>
   </div>
@@ -27,6 +27,9 @@ export default {
     }
   },
   methods: {
+    search: function () {
+      console.log(this.formInline)
+    }
   }
 }
 </script>
