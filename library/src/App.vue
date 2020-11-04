@@ -1,11 +1,6 @@
 <template>
   <div id="app">
     <Header></Header>
-    <img src="./assets/logo.png">
-    <div class="demo-input-size">
-      <el-button type="primary" @click="getBookByPubName">查书（出版社）</el-button>
-      <el-input id="pubName" size="mini" v-model="publisherName" placeholder="请输入出版社名"></el-input>
-    </div>
     <router-view/>
     <Footer></Footer>
   </div>

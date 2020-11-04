@@ -18,10 +18,9 @@ router.get('/books/publisher', async ctx => {
   ctx.response.body = obj
 })
 
-router.get('/books/borrow', async ctx => {
-  const bookId = '2'
-  const userId = '3'
-  const result = await dbService.borrowBook(bookId, userId)
+router.post('/books/borrow', async ctx => {
+  const obj = ctx.request.body
+  const result = await dbService.borrowBook(obj.bookId, obj.userId)
   ctx.response.body = result
 })
 
