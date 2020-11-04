@@ -83,11 +83,25 @@ const addBook = function (book) {
       book.author, 1, book.digest, book.cover])
 }
 
+/**
+* @function 更新图书信息
+* @description 添加图书
+* @param book
+* @return successmessage
+* @author Wang Ying 4/11/2020
+ */
+const getUserInfo = async function (userId) {
+  const result = await mysql.query(sql.queryUserById, [userId])
+  console.log(result)
+  return result
+}
+
 module.exports = {
   getBookByPublisher,
   borrowBook,
   getBookByclazz,
   updateBook,
   getBookByName,
-  addBook
+  addBook,
+  getUserInfo
 }

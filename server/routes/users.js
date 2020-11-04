@@ -8,7 +8,7 @@ router.get('/', function (ctx, next) {
 /**
  * 查询书籍：根据出版社
  */
-router.get('/books/publisher', async ctx => {
+router.get('/book/publisher', async ctx => {
   const publisherName = ctx.request.query.publisherName
   console.log(publisherName)
   const obj = {}
@@ -19,8 +19,9 @@ router.get('/books/publisher', async ctx => {
 /**
  * 借书
  */
-router.post('/books/borrow', async ctx => {
+router.post('/book/borrow', async ctx => {
   const obj = ctx.request.body
+  console.log(obj)
   const result = await dbService.borrowBook(obj.bookId, obj.userId)
   ctx.response.body = result
 })
@@ -103,4 +104,17 @@ router.post('/bookadd', async (ctx) => {
   } else ctx.response.body = JSON.stringify(obj)
 })
 
+/**
+ * author: cxw
+ * descirption: get user by id
+ */
+router.get('/user', async ctx => {
+  const userId = ctx.request.query.userId
+  const userInfo = await dbService.getUserInfo(userId)
+  const result = { userInfo, code: 0 }
+  if (userInfo.length !== 0) {
+    result.code = 1
+  }
+  ctx.response.body = result
+})
 module.exports = router

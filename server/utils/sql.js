@@ -14,6 +14,11 @@ const queryByPublisher =
 const queryBookNumber = 'select number from book where id = ?'
 const insertBorrow = 'insert into `borrow` (book_id, user_id, borrow_date) values (?,?,?)'
 const updateBookNumber = 'update book set number=number-1 where id = ?'
+/**
+ * @author:cxw
+ * @description:查询用户是否存在
+ */
+const queryUserById = 'select * from user where id = ?'
 
 // 根据书名查询图书信息 wy
 const queryByName =
@@ -51,5 +56,6 @@ module.exports = {
   addBook,
   updateBookNumber,
   updateBook,
-  queryByClazz
+  queryByClazz,
+  queryUserById
 }

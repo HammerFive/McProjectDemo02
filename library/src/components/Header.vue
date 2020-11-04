@@ -1,14 +1,16 @@
 <template>
   <div style="border-bottom:1px solid #e6e6e6; height: 100px; margin-left:100px">
-    <el-image
+    <router-link to="/">
+      <el-image
       style="width: 100px; height: 100px; float:left"
       :src="url"></el-image>
+    </router-link>
       <Search style="float: left"></Search>
     <el-menu style="float:left" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1">查询</el-menu-item>
-      <el-menu-item index="2">书库</el-menu-item>
-      <el-menu-item index="3">管理</el-menu-item>
-      <el-menu-item index="4">借书</el-menu-item>
+      <el-menu-item index="1"><router-link to="/search">查询</router-link></el-menu-item>
+      <el-menu-item index="2"><router-link to="/books">书库</router-link></el-menu-item>
+      <el-menu-item index="3"><router-link to="/manage">管理</router-link></el-menu-item>
+      <el-menu-item index="4"><router-link to="/borrow">借书</router-link></el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -29,7 +31,6 @@ export default {
   },
   methods: {
     handleSelect (key, keyPath) {
-      console.log(key, keyPath)
     }
   }
 }
@@ -41,5 +42,8 @@ export default {
   height:80px;
   margin-top: 20px;
   font-size: 20px;
+}
+a {
+  text-decoration: none;
 }
 </style>
