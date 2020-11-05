@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+import Bookadd from '@/components/wy/book_add'
+import Bookupdate from '@/components/wy/book_update'
 import MainSearch from '@/components/cxw/main-search'
 import Reservation from '@/components/cxw/reservation'
-import Bookadd from '@/components/Bookadd'
-import Bookupdate from '@/components/Bookupdate'
 import Search from '@/components/cxw/search'
 
 Vue.use(Router)
