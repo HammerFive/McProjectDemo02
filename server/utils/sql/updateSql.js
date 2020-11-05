@@ -1,4 +1,8 @@
-const UPDATE_BOOK_RESERVASTION = 'update book set number=number-1 where id = ?'
+/**
+ * @author:cxw
+ * @description:更新图书数量
+ */
+const UPDATE_BOOK_RESERVASTION = 'UPDATE book SET storage=storage-1 WHERE id = ?'
 
 /**
  * @author:lqz
@@ -8,3 +12,7 @@ const UPDATE_BOOK =
   'UPDATE book ' +
   'SET name=?,number=?,author=?,digest=?,cover=?,publisher_id=?,clazz_id=? ' +
   'WHERE book.id = ?'
+
+module.exports = {
+  UPDATE_BOOK_RESERVASTION
+}

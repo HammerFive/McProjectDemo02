@@ -1,6 +1,4 @@
 
-
-
 /**
  * @author lqz
  * @description 更新图书id和类型id
@@ -21,8 +19,4 @@ const updateBook = function (book) {
       book.id
     ]
   )
-}
-
-module.exports = {
-  updateBook
 }

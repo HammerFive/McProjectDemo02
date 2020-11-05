@@ -1,5 +1,5 @@
 const Koa = require('koa')
-const views = require('koa-views')
+// const views = require('koa-views')
 const json = require('koa-json')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
@@ -11,6 +11,7 @@ const users = require('./routes/users')
 const app = new Koa()
 
 app.use(cors())
+
 // middlewares
 app.use(bodyparser({
   enableTypes: ['json', 'form', 'text']
@@ -19,9 +20,9 @@ app.use(json())
 app.use(logger())
 app.use(require('koa-static')(path.join(__dirname, '/public')))
 
-app.use(views(path.join(__dirname, '/views'), {
+/* app.use(views(path.join(__dirname, '/views'), {
   extension: 'ejs'
-}))
+})) */
 
 // logger
 app.use(async (ctx, next) => {
