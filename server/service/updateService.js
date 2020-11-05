@@ -9,10 +9,10 @@ const updateBook = function (book) {
     sql.updateBook,
     [
       book.name,
-      book.number,
+      book.storage,
       book.author,
       book.digest,
-      book.cover,
+      book.cover_url,
       book.publisher_id,
       book.category_id,
       book.id
