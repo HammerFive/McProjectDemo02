@@ -19,7 +19,7 @@
       </el-form-item>
       <!--书类别选择器-->
       <el-form-item prop="category_id" label="分类">
-        <el-select v-model="form.category_id" placeholder="请选择分类">
+        <el-select v-model="form.category" placeholder="请选择分类">
           <el-option
           v-for="item in category"
           :key="item.value"
@@ -45,15 +45,18 @@
 <script>
 export default {
   name: 'book_update',
+  props: ['searchVal', 'books', 'book'],
   data () {
     return {
       form: {
-        name: '',
-        author: '',
-        publisher_id: undefined,
-        category_id: undefined,
-        storage: undefined,
-        digest: ''
+        name: this.book.name,
+        author: this.book.author,
+        publisher: this.book.publisher,
+        publisher_id: this.book.publisher_id,
+        category_id: this.book.category_id,
+        category: this.book.category,
+        storage: this.book.storage,
+        digest: this.book.digest
       },
       rules: {
         name: [

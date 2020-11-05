@@ -3,7 +3,7 @@
  * @description:根据出版社查询图书
  */
 const SELECT_BOOKS_BY_PUBLISHER =
-  'SELECT a.id, a.name, a.storage, a.author, a.digest, a.cover_url, b.name as publisher, c.name as category ' +
+  'SELECT a.id, a.name, a.storage, a.author, a.digest, a.cover_url, a.publisher_id, a.category_id, b.name as publisher, c.name as category ' +
   'FROM book a,publisher b,category c ' +
   'WHERE a.publisher_id = b.id and a.category_id = c.id and a.removed = 0 and b.name = ?'
 
@@ -20,7 +20,7 @@ const SELECT_USER_ID = 'SELECT * FROM user WHERE id = ?'
  * @description:根据书名查询booklist
  */
 const SELECT_BOOKS_BY_BOOKNAME =
-  'SELECT a.id, a.name, a.storage, a.author, a.digest, a.cover_url, b.name as publisher, c.name as category ' +
+  'SELECT a.id, a.name, a.storage, a.author, a.digest, a.cover_url, a.publisher_id, a.category_id, b.name as publisher, c.name as category ' +
   'FROM book a, publisher b, category c ' +
   'WHERE a.publisher_id = b.id and a.category_id = c.id and a.name = ? and a.removed = 0'
 
@@ -29,7 +29,7 @@ const SELECT_BOOKS_BY_BOOKNAME =
  * @description:根据类型查询图书
  */
 const SELECT_BOOKS_BY_CATEGORY =
-'SELECT b.id, b.name, b.storage, b.author, b.digest, b.cover_url, p.name as publisher, c.name as category ' +
+'SELECT b.id, b.name, b.storage, b.author, b.digest, b.cover_url, b.publisher_id, b.category_id, p.name as publisher, c.name as category ' +
 'FROM book b,publisher p,category c ' +
 'WHERE b.publisher_id = p.id and b.category_id = c.id and c.name = ? and b.removed = 0'
 
