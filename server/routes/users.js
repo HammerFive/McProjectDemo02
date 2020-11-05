@@ -36,10 +36,9 @@ router.get('/book/category', async ctx => {
   }
 })
 
-/*
+/**
  * 根据书名获取图书
  */
-
 router.get('/book/bookName', async (ctx) => {
   const bookname = ctx.query.name
   const results = await selectService.getBookByName(bookname)
@@ -61,7 +60,7 @@ router.put('/book', async ctx => {
   }
 })
 
-/*
+/**
  * 添加图书
  */
 router.post('/book', async (ctx) => {
@@ -114,7 +113,7 @@ router.get('/book', async ctx => {
 /**
  * 根据Id删除图书
  */
-router.delete('/book', async (ctx) => {
+router.post('/book', async (ctx) => {
   const bookId = ctx.request.body
   await updateService.deleteBook(bookId)
   ctx.response.body = {

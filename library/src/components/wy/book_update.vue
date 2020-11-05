@@ -49,6 +49,7 @@ export default {
   data () {
     return {
       form: {
+<<<<<<< HEAD
         name: this.book.name,
         author: this.book.author,
         publisher: this.book.publisher,
@@ -57,6 +58,15 @@ export default {
         category: this.book.category,
         storage: this.book.storage,
         digest: this.book.digest
+=======
+        id: undefined,
+        name: '',
+        author: '',
+        publisher_id: undefined,
+        category_id: undefined,
+        storage: undefined,
+        digest: ''
+>>>>>>> a10f600c0bac45d40726d85ad591f0fd5d92b6e5
       },
       publisher_id: this.book.publisher,
       category_id: this.book.category,
@@ -104,7 +114,8 @@ export default {
         { value: '7', label: '旅游' },
         { value: '8', label: '育儿' },
         { value: '9', label: '心理健康' },
-        { value: '10', label: '经济' }
+        { value: '10', label: '经济' },
+        { value: '11', label: '科学' }
       ]
     }
   },
@@ -130,6 +141,7 @@ export default {
     },
     deletebook () {
       console.log(this.form)
+      this.$axios.delete(`http://localhost:3000/data/${this.form.id}`).then(res => {})
     }
   }
 }
