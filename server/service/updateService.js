@@ -1,3 +1,6 @@
+const mysql = require('../config/mysql_config.js')
+const updateSql = require('../utils/sql/updateSql.js')
+
 /**
  * @author lqz
  * @param  book
@@ -6,16 +9,20 @@
  */
 const updateBook = function (book) {
   return mysql.query(
-    sql.updateBook,
+    updateSql.UPDATE_BOOK,
     [
       book.name,
-      book.number,
+      book.storage,
       book.author,
       book.digest,
-      book.cover,
+      book.cover_url,
       book.publisher_id,
       book.category_id,
       book.id
     ]
   )
+}
+
+module.exports = {
+  updateBook
 }

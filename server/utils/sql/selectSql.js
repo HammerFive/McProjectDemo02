@@ -26,12 +26,13 @@ const queryByName =
  * @description:根据类型查询图书
  */
 const SELECT_BOOKS_BY_CATEGORY =
-'SELECT b.id, b.name, b.number, b.author, b.digest, b.cover, p.name as publisher, c.name as category ' +
+'SELECT b.id, b.name, b.storage, b.author, b.digest, b.cover, p.name as publisher, c.name as category ' +
 'FROM book b,publisher p,category c ' +
-'WHERE b.publisher_id = p.id and b.category_id = c.id and c.name = ? and b.exist = 1'
+'WHERE b.publisher_id = p.id and b.category_id = c.id and c.name = ? and b.removed = 0'
 
 module.exports = {
   SELECT_BOOKS_BY_PUBLISHER,
   SELECT_BOOK_STOREGE,
-  SELECT_USER_ID
+  SELECT_USER_ID,
+  SELECT_BOOKS_BY_CATEGORY
 }

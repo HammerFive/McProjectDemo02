@@ -23,7 +23,7 @@ async function getBookByPublisher (publisherName) {
  * @description 根据类型获取图书
  */
 async function getBookByCategory (category) {
-  return await mysql.query(sql.SELECT_BOOKS_BY_CATEGORY, [category])
+  return await mysql.query(selectSql.SELECT_BOOKS_BY_CATEGORY, [category])
 }
 
 /**
@@ -50,5 +50,6 @@ const getUserInfo = async function (userId) {
 
 module.exports = {
   getUserInfo,
-  getBookByPublisher
+  getBookByPublisher,
+  getBookByCategory
 }
