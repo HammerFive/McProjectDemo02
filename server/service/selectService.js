@@ -56,7 +56,8 @@ const getUserInfo = async function (userId) {
 * @author Zhang Sheng 4/11/2020
 */
 async function getAllBook () {
-  return await mysql.query(selectSql.SELECT_BOOKS_ALL)
+  const result = await mysql.query(selectSql.SELECT_BOOKS_ALL)
+  return result
 }
 
 module.exports = {
