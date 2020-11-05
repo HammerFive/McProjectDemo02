@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'Search',
+  name: 'search',
   data () {
     return {
       formInline: {

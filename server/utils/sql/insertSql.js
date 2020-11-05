@@ -3,7 +3,7 @@
  * @author:cxw
  * @description:借书
  */
-const INSERT_RESERVASTION = 'insert into `borrow` (book_id, user_id, borrow_date) values (?,?,?)'
+const INSERT_RESERVASTION = 'INSERT into reservation (book_id, user_id, borrow_date) values (?,?,?)'
 
 /**
  * @author:wy

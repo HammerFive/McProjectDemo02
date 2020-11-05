@@ -1,3 +1,7 @@
+const mysql = require('../utils/query.js')
+const updateSql = require('../utils/sql/updateSql.js')
+const deleteSql = require('../utils/sql/deleteSql.js')
+
 /**
  * @author lqz
  * @param  book
@@ -6,7 +10,7 @@
  */
 const updateBook = function (book) {
   return mysql.query(
-    sql.updateBook,
+    updateSql.UPDATE_BOOK,
     [
       book.name,
       book.storage,
@@ -20,6 +24,21 @@ const updateBook = function (book) {
   )
 }
 
+/**
+* @function 删除图书信息
+* @description 根据唯一标识bookId删除书籍
+* @param bookId
+* @return
+* @author Zhang Sheng 4/11/2020
+*/
+async function deleteBook (bookId) {
+  return await mysql.query(
+    deleteSql.DELETE_BOOK_BY_ID,
+    [bookId]
+  )
+}
+
 module.exports = {
-  updateBook
+  updateBook,
+  deleteBook
 }

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'MainSearch',
+  name: 'main-search',
   data () {
     return {
       formInline: {
@@ -26,9 +26,13 @@ export default {
       }
     }
   },
+  watch: {
+
+  },
   methods: {
     search: function () {
       if (this.formInline.type === 'publisher') {
+        this.$emit('getMessage', this.formInline)
         this.$axios.get('http://localhost:3000/users/book/publisher', {
           params: {
             publisherName: this.formInline.searchName
@@ -38,16 +42,16 @@ export default {
             console.log(response.data)
           })
       } else if (this.formInline.type === 'class') {
-        this.$axios.get('http://localhost:3000/users/books/clazz', {
+        this.$axios.get('http://localhost:3000/users/book/category', {
           params: {
-            clazz: this.formInline.searchName
+            category: this.formInline.searchName
           }
         })
           .then(response => {
             console.log(response.data)
           })
       } else {
-        this.$axios.get('http://localhost:3000/users/book', {
+        this.$axios.get('http://localhost:3000/users/book/bookName', {
           params: {
             name: this.formInline.searchName
           }

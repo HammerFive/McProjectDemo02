@@ -11,6 +11,7 @@ const users = require('./routes/users')
 const app = new Koa()
 
 app.use(cors())
+
 // middlewares
 app.use(bodyparser({
   enableTypes: ['json', 'form', 'text']

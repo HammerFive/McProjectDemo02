@@ -21,7 +21,8 @@
 
 <script>
 export default {
-  name: 'Borrow',
+  name: 'reservation',
+  props: ['searchVal'],
   data () {
     return {
       form: {
@@ -38,6 +39,9 @@ export default {
   },
   watch: {
     form: {
+      searchVal: function (val) {
+        console.log(val + 'In reservation')
+      },
       handler: function (val, oldVal) {
         if (val.userId === '') {
           this.checkUserId.iClass = 'el-icon-warning-outline'
@@ -73,7 +77,7 @@ export default {
   },
   methods: {
     onSubmit: function () {
-      this.$axios.post('http://localhost:3000/users/books/borrow', {
+      this.$axios.post('http://localhost:3000/users/book/reservation', {
         bookId: this.form.bookId,
         userId: this.form.userId
       })
