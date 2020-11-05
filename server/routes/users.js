@@ -28,8 +28,8 @@ router.post('/book/reservation', async ctx => {
 
 /**
  * @author lqz
- * @param
- * @returns
+ * @param  
+ * @returns JSON
  * @description 根据类型获取图书
  */
 router.get('/book/category', async ctx => {
@@ -59,8 +59,8 @@ router.get('/book/bookName', async (ctx) => {
 
 /**
  * @author lqz
- * @param
- * @returns
+ * @param 
+ * @returns JSON
  * @description 更新图书
  */
 router.put('/book', async ctx => {
