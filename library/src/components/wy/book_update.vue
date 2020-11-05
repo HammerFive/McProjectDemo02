@@ -29,7 +29,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="storage" label="数量">
-        <el-input v-model.number="form.storage"></el-input>
+        <el-input v-model="form.storage"></el-input>
       </el-form-item>
       <el-form-item prop="digest" label="摘要" class="digest">
         <el-input v-model="form.digest" type="textarea"></el-input>
@@ -49,7 +49,6 @@ export default {
   data () {
     return {
       form: {
-<<<<<<< HEAD
         name: this.book.name,
         author: this.book.author,
         publisher: this.book.publisher,
@@ -58,15 +57,6 @@ export default {
         category: this.book.category,
         storage: this.book.storage,
         digest: this.book.digest
-=======
-        id: undefined,
-        name: '',
-        author: '',
-        publisher_id: undefined,
-        category_id: undefined,
-        storage: undefined,
-        digest: ''
->>>>>>> a10f600c0bac45d40726d85ad591f0fd5d92b6e5
       },
       publisher_id: this.book.publisher,
       category_id: this.book.category,
