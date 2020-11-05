@@ -41,14 +41,14 @@
 </template>
 
 <script>
-import Publisher from '@/components/wy/book_update'
+// import Publisher from '@/components/wy/book_update'
 export default {
   // name: 'book_add',
+  // publisher: Publisher.data().publisher,
+  // category: Publisher.data().category,
+  // rules: Publisher.data().rules,
   data () {
     return {
-      publisher: Publisher.data().publisher,
-      category: Publisher.data().category,
-      rules: Publisher.data().rules,
       form: {
         name: '',
         author: '',
