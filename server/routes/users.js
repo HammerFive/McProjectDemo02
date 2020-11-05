@@ -50,7 +50,7 @@ router.get('/book/category', async ctx => {
 router.get('/book/bookName', async (ctx) => {
   const bookname = ctx.query.name
   console.log(bookname)
-  const results = await dbService.getBookByName(bookname)
+  const results = await selectService.getBookByName(bookname)
   console.log(results)
   const obj = {}
   obj.data = results
@@ -80,26 +80,18 @@ router.put('/book', async ctx => {
  *  name : bookadd
  */
 router.post('/book', async (ctx) => {
-  console.log(ctx.request.body)
   const bookname = ctx.request.body.name
   const book = ctx.request.body
   // 先查看是否已经存在
-  const results1 = await dbService.getBookByName(bookname)
-  console.log(results1)
-  const obj = {
-    code: 0
-  }
+  const results1 = await selectService.getBookByName(bookname)
   if (results1.length === 0 ||
-     (results1.length === 1 && results1[0].exist === 0)) {
-    await dbService.addBook(book).then(results => {
-      console.log(results)
+     (results1.length === 1 && results1[0].removed === 1)) {
+    await insertService.addBook(book).then(results => {
       if (results.affectedRows === 1) {
-        obj.code = 1
-        obj.msg = 'successful'
-        ctx.response.body = JSON.stringify(obj)
-      } else ctx.response.body = JSON.stringify(obj)
+        ctx.response.body = { msg: 'successful', code: 1 }
+      } else ctx.response.body = { msg: 'error', code: 0 }
     })
-  } else ctx.response.body = JSON.stringify(obj)
+  } else ctx.response.body = { msg: 'Book already exist', code: 0 }
 })
 
 /**

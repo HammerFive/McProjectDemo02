@@ -30,8 +30,8 @@ const getBookByclazz = function (clazz) {
 * @return bookList
 * @author Wang Ying 4/11/2020
  */
-const getBookByName = function (bookName) {
-  return mysql.query(sql.queryByName, [bookName])
+async function getBookByName (bookName) {
+  return await mysql.query(selectSql.SELECT_BOOKS_BY_BOOKNAME, [bookName])
 }
 
 const getUserInfo = async function (userId) {
