@@ -1,5 +1,6 @@
 const mysql = require('../utils/query.js')
 const updateSql = require('../utils/sql/updateSql.js')
+const deleteSql = require('../utils/sql/deleteSql.js')
 
 /**
  * @author lqz
@@ -30,11 +31,11 @@ const updateBook = function (book) {
 * @return
 * @author Zhang Sheng 4/11/2020
 */
-async function deleteBook(bookId){
+async function deleteBook (bookId) {
   return await mysql.query(
-    sql.deleteBook,
+    deleteSql.DELETE_BOOK_BY_ID,
     [bookId]
-    )
+  )
 }
 
 module.exports = {
