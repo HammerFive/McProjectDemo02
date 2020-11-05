@@ -36,11 +36,6 @@
       label="出版社"
       width="165">
     </el-table-column>
-    <!-- <el-table-column
-      prop="price"
-      label="价格"
-      width="165">
-    </el-table-column> -->
     <el-table-column
       prop="storage"
       label="库存"

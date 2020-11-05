@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       path: '/bookadd',
-      name: 'Bookadd',
+      name: 'book_add',
       component: Bookadd
     },
     {

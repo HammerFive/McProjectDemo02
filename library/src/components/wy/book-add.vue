@@ -27,7 +27,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="storage" label="数量">
-        <el-input v-model.number="form.storage"></el-input>
+        <el-input v-model="form.storage"></el-input>
       </el-form-item>
       <el-form-item prop="digest" label="摘要" class="digest">
         <el-input v-model="form.digest" type="textarea"></el-input>
