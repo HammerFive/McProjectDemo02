@@ -110,7 +110,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           console.log(this.form)
-          this.axios.put('http://localhost:3000/users/book', this.form).then(res => {
+          this.$axios.put('http://localhost:3000/users/book', this.form).then(res => {
             console.log(res.data)
             if (res.data.code === 1) alert('添加成功!')
             else alert('添加失败')
@@ -121,7 +121,6 @@ export default {
       })
     },
     deletebook () {
-      console.log(this.form)
       this.$axios.delete(`http://localhost:3000/data/${this.form.id}`).then(res => {})
     }
   }
