@@ -31,7 +31,10 @@ const updateBook = function (book) {
 * @author Zhang Sheng 4/11/2020
 */
 async function deleteBook(bookId){
-  return await mysql.query(sql.deleteBook,[bookId])
+  return await mysql.query(
+    sql.deleteBook,
+    [bookId]
+    )
 }
 
 module.exports = {

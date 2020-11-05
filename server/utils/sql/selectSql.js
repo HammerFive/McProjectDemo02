@@ -40,7 +40,7 @@ const SELECT_BOOKS_BY_CATEGORY =
 const SELECT_BOOKS_ALL =
 'SELECT a.id, a.name, a.storage, a.author, a.digest, a.cover_url, b.name as publisher, c.name as category ' +
 'FROM book a,publisher b,category c '
-'WHERE a.publisher_id = b.id and a.category_id = c.id and a.exist = 1'
+'WHERE a.publisher_id = b.id and a.category_id = c.id and a.removed = 0'
 
 
 module.exports = {
@@ -48,5 +48,6 @@ module.exports = {
   SELECT_BOOKS_BY_PUBLISHER,
   SELECT_BOOKS_BY_CATEGORY,
   SELECT_BOOK_STOREGE,
-  SELECT_USER_ID
+  SELECT_USER_ID，
+  SELECT_BOOKS_ALL
 }
