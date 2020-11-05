@@ -36,10 +36,9 @@ router.get('/book/category', async ctx => {
   }
 })
 
-/*
+/**
  * 根据书名获取图书
  */
-
 router.get('/book/bookName', async (ctx) => {
   const bookname = ctx.query.name
   const results = await selectService.getBookByName(bookname)
@@ -61,7 +60,7 @@ router.put('/book', async ctx => {
   }
 })
 
-/*
+/**
  * 添加图书
  */
 router.post('/book', async (ctx) => {

@@ -31,7 +31,7 @@ async function getBookByCategory (category) {
 * @description 根据书名获取图书
 * @param bookName
 * @return bookList
-* @author Wang Ying 4/11/2020
+* @author Wy 4/11/2020
  */
 async function getBookByName (bookName) {
   return await mysql.query(selectSql.SELECT_BOOKS_BY_BOOKNAME, [bookName])
