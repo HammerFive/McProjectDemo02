@@ -1,17 +1,15 @@
 const router = require('koa-router')()
-const dbService = require('../service/db.js')
+const selectService = require('../service/selectService.js')
+const insertService = require('../service/insertService.js')
+const updateService = require('../service/updateService.js')
 router.prefix('/users')
 
-router.get('/', function (ctx, next) {
-  ctx.body = 'this is a users response!'
-})
-
 /**
- * 根据出版社查询书籍
+ * 根据出版社获取图书
  */
 router.get('/book/publisher', async ctx => {
   const books =
-    await dbService.getBookByPublisher(ctx.request.query.publisherName)
+    await selectService.getBookByPublisher(ctx.request.query.publisherName)
   ctx.response.body = {
     books,
     code: 1
@@ -23,7 +21,7 @@ router.get('/book/publisher', async ctx => {
  */
 router.post('/book/reservation', async ctx => {
   const { bookId, userId } = ctx.request.body
-  ctx.body = await dbService.borrowBook(bookId, userId)
+  ctx.body = await insertService.borrowBook(bookId, userId)
 })
 
 /**
@@ -31,7 +29,7 @@ router.post('/book/reservation', async ctx => {
  */
 router.get('/book/category', async ctx => {
   const category = ctx.query.category
-  const books = await dbService.getBookBycategory(category)
+  const books = await selectService.getBookByCategory(category)
   ctx.response.body = {
     books,
     code: 1
@@ -39,30 +37,24 @@ router.get('/book/category', async ctx => {
 })
 
 /*
- *  author:wy
- *  name : getBookByName
+ * 根据书名获取图书
  */
 
 router.get('/book/bookName', async (ctx) => {
   const bookname = ctx.query.name
-  console.log(bookname)
   const results = await selectService.getBookByName(bookname)
-  console.log(results)
-  const obj = {}
-  obj.data = results
-  obj.code = 1
-  ctx.response.body = obj
+  ctx.body = {
+    books: results,
+    code: 1
+  }
 })
 
 /**
- * @author lqz
- * @param 
- * @returns JSON
- * @description 更新图书
+ * 更新图书
  */
 router.put('/book', async ctx => {
-  let book = ctx.request.body
-  await dbService.updateBook(book)
+  const book = ctx.request.body
+  await updateService.updateBook(book)
   ctx.response.body = {
     msg: 'update book successfully!',
     code: 1
@@ -70,8 +62,7 @@ router.put('/book', async ctx => {
 })
 
 /*
- *  author:wy
- *  name : bookadd
+ * 添加图书
  */
 router.post('/book', async (ctx) => {
   const bookname = ctx.request.body.name
@@ -89,12 +80,11 @@ router.post('/book', async (ctx) => {
 })
 
 /**
- * author: cxw
- * descirption: get user by id
+ * 获取用户
  */
 router.get('/user', async ctx => {
   const userId = ctx.request.query.userId
-  const userInfo = await dbService.getUserInfo(userId)
+  const userInfo = await selectService.getUserInfo(userId)
   const result = { userInfo, code: 0 }
   if (userInfo.length !== 0) {
     result.code = 1

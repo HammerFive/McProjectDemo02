@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     onSubmit: function () {
-      this.$axios.post('http://localhost:3000/users/books/borrow', {
+      this.$axios.post('http://localhost:3000/users/book/reservation', {
         bookId: this.form.bookId,
         userId: this.form.userId
       })

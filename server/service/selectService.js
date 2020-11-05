@@ -1,4 +1,4 @@
-const mysql = require('../config/mysql_config.js')
+const mysql = require('../utils/query.js')
 const selectSql = require('../utils/sql/selectSql.js')
 
 /**
@@ -51,5 +51,6 @@ const getUserInfo = async function (userId) {
 module.exports = {
   getUserInfo,
   getBookByPublisher,
-  getBookByCategory
+  getBookByCategory,
+  getBookByName
 }

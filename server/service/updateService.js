@@ -1,4 +1,4 @@
-const mysql = require('../config/mysql_config.js')
+const mysql = require('../utils/query.js')
 const updateSql = require('../utils/sql/updateSql.js')
 
 /**

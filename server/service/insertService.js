@@ -1,7 +1,8 @@
-const mysql = require('../config/mysql_config.js')
+const mysql = require('../utils/query.js')
 const insertSql = require('../utils/sql/insertSql.js')
 const selectSql = require('../utils/sql/selectSql.js')
 const updateSql = require('../utils/sql/updateSql.js')
+
 /**
 * @function 更新图书信息
 * @description 添加图书
@@ -34,7 +35,7 @@ async function addBook (book) {
 * @author Chen Xiaowu 3/11/2020
  */
 async function borrowBook (bookId, userId) {
-  let result = await mysql.query(selectSql.SELECT_BOOK_NUMBER, [bookId])
+  let result = await mysql.query(selectSql.SELECT_BOOK_STOREGE, [bookId])
   if (result[0].number > 0) {
     const date = new Date().toLocaleDateString()
     await mysql.query(insertSql.INSERT_RESERVASTION, [bookId, userId, date])
@@ -51,5 +52,6 @@ async function borrowBook (bookId, userId) {
 }
 
 module.exports = {
-  borrowBook
+  borrowBook,
+  addBook
 }
