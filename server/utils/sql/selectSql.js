@@ -17,18 +17,18 @@ const SELECT_USER_ID = 'SELECT * FROM user WHERE id = ?'
 
 // 根据书名查询图书信息 wy
 const queryByName =
-  'SELECT a.id, a.name, a.number, a.author, a.digest, a.cover, b.name as publisher, c.name as clazz ' +
-  'FROM book a,publisher b,clazz c ' +
-  'WHERE a.publisher_id = b.id and a.clazz_id = c.id and a.name = ? and a.exist=1'
+  'SELECT a.id, a.name, a.number, a.author, a.digest, a.cover, b.name as publisher, c.name as category ' +
+  'FROM book a,publisher b,category c ' +
+  'WHERE a.publisher_id = b.id and a.category_id = c.id and a.name = ? and a.exist=1'
 
 /**
  * @author:lqz
  * @description:根据类型查询图书
  */
-const queryByClazz =
-'SELECT b.id, b.name, b.number, b.author, b.digest, b.cover, p.name as publisher, c.name as clazz ' +
-'FROM book b,publisher p,clazz c ' +
-'WHERE b.publisher_id = p.id and b.clazz_id = c.id and c.name = ? and b.exist = 1'
+const SELECT_BOOKS_BY_CATEGORY =
+'SELECT b.id, b.name, b.number, b.author, b.digest, b.cover, p.name as publisher, c.name as category ' +
+'FROM book b,publisher p,category c ' +
+'WHERE b.publisher_id = p.id and b.category_id = c.id and c.name = ? and b.exist = 1'
 
 module.exports = {
   SELECT_BOOKS_BY_PUBLISHER,

@@ -10,7 +10,7 @@ const UPDATE_BOOK_RESERVASTION = 'UPDATE book SET storage=storage-1 WHERE id = ?
  */
 const UPDATE_BOOK =
   'UPDATE book ' +
-  'SET name=?,number=?,author=?,digest=?,cover=?,publisher_id=?,clazz_id=? ' +
+  'SET name=?,number=?,author=?,digest=?,cover=?,publisher_id=?,category_id=? ' +
   'WHERE book.id = ?'
 
 module.exports = {

@@ -11,7 +11,7 @@ const updateSql = require('../utils/sql/updateSql.js')
  */
 const addBook = function (book) {
   return mysql.query(sql.addBook,
-    [book.name, book.publisher_id, book.clazz_id, book.number,
+    [book.name, book.publisher_id, book.category_id, book.number,
       book.author, 1, book.digest, book.cover])
 }
 
