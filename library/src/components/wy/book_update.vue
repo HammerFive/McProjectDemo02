@@ -48,6 +48,7 @@ export default {
   data () {
     return {
       form: {
+        id: undefined,
         name: '',
         author: '',
         publisher_id: undefined,
@@ -99,7 +100,8 @@ export default {
         { value: '7', label: '旅游' },
         { value: '8', label: '育儿' },
         { value: '9', label: '心理健康' },
-        { value: '10', label: '经济' }
+        { value: '10', label: '经济' },
+        { value: '11', label: '科学' }
       ]
     }
   },
@@ -120,6 +122,7 @@ export default {
     },
     deletebook () {
       console.log(this.form)
+      this.$axios.delete(`http://localhost:3000/data/${this.form.id}`).then(res => {})
     }
   }
 }
