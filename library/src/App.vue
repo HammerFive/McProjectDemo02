@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from '@/components/cxw/my-header'
+import Footer from '@/components/cxw/my-footer'
 export default {
   name: 'App',
   data () {
