@@ -92,3 +92,26 @@ router.get('/user', async ctx => {
   ctx.response.body = result
 })
 module.exports = router
+
+/**
+ * 获取所有图书
+ */
+router.get('/book', async ctx => {
+  const books = await selectService.getAllBook()
+  ctx.response.body = {
+    books,
+    code: 1
+  }
+})
+
+/**
+ * 根据Id删除图书
+ */
+router.post('/book/bookId', async (ctx) => {
+  const bookId = ctx.query.id
+  await updateService.deleteBook(bookId)
+  ctx.body = {
+    msg: 'delete book successfully!',
+    code: 1
+  }
+})
