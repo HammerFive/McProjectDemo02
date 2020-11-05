@@ -107,10 +107,10 @@ router.get('/book', async ctx => {
 /**
  * 根据Id删除图书
  */
-router.post('/book/bookId', async (ctx) => {
-  const bookId = ctx.query.id
+router.delete('/book', async (ctx) => {
+  const bookId = ctx.request.body
   await updateService.deleteBook(bookId)
-  ctx.body = {
+  ctx.response.body = {
     msg: 'delete book successfully!',
     code: 1
   }
