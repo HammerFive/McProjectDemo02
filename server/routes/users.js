@@ -5,6 +5,7 @@ router.prefix('/users')
 router.get('/', function (ctx, next) {
   ctx.body = 'this is a users response!'
 })
+
 /**
  * 查询书籍：根据出版社
  */
@@ -16,6 +17,7 @@ router.get('/book/publisher', async ctx => {
     code: 1
   }
 })
+
 /**
  * 借书
  */
@@ -26,20 +28,17 @@ router.post('/book/reservation', async ctx => {
 
 /**
  * @author lqz
- * @param
- * @returns
+ * @param  
+ * @returns JSON
  * @description 根据类型获取图书
  */
 router.get('/book/category', async ctx => {
-  const clazz = ctx.query.clazz
-
-  console.log(clazz)
-
-  const results = await dbService.getBookByclazz(clazz)
-  const obj = {}
-  obj.data = results
-  obj.code = 1
-  ctx.response.body = obj
+  const category = ctx.query.category
+  const books = await dbService.getBookBycategory(category)
+  ctx.response.body = {
+    books,
+    code: 1
+  }
 })
 
 /*
@@ -60,14 +59,12 @@ router.get('/book/bookName', async (ctx) => {
 
 /**
  * @author lqz
- * @param
- * @returns
+ * @param 
+ * @returns JSON
  * @description 更新图书
  */
 router.put('/book', async ctx => {
-  let book = {}
-
-  book = ctx.request.body
+  let book = ctx.request.body
   await dbService.updateBook(book)
   ctx.response.body = {
     msg: 'update book successfully!',

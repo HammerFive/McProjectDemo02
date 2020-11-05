@@ -13,13 +13,13 @@ async function getBookByPublisher (publisherName) {
 
 
 /**
- * @author lqz
- * @description 根据类型获取图书
- * @param  (clazz)
+ * @author lqz 2020/11/4
+ * @param  category
  * @returns 查询图书结果
+ * @description 根据类型获取图书
  */
-const getBookByclazz = function (clazz) {
-  return mysql.query(sql.queryByClazz, [clazz])
+async function getBookByCategory (category) {
+  return await mysql.query(sql.SELECT_BOOKS_BY_CATEGORY, [category])
 }
 
 

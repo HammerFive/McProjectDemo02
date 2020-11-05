@@ -21,8 +21,6 @@ async function addBook (book) {
   )
 }
 
-
-
 /**
 * @function 借书
 * @description 通过图书id和用户id借书

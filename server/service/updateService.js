@@ -1,23 +1,20 @@
-
-
-
 /**
  * @author lqz
- * @description 更新图书id和类型id
- * @param  (book)
+ * @param  book
  * @returns
+ * @description 更新图书id和类型id
  */
 const updateBook = function (book) {
   return mysql.query(
     sql.updateBook,
     [
       book.name,
-      book.number,
+      book.storage,
       book.author,
       book.digest,
-      book.cover,
+      book.cover_url,
       book.publisher_id,
-      book.clazz_id,
+      book.category_id,
       book.id
     ]
   )
