@@ -31,15 +31,15 @@ export default {
   },
   methods: {
     search: function () {
+      this.$emit('getSearchVal', this.formInline)
       if (this.formInline.type === 'publisher') {
-        this.$emit('getMessage', this.formInline)
         this.$axios.get('http://localhost:3000/users/book/publisher', {
           params: {
             publisherName: this.formInline.searchName
           }
         })
           .then(response => {
-            console.log(response.data)
+            this.$emit('getBooks', response.data)
           })
       } else if (this.formInline.type === 'class') {
         this.$axios.get('http://localhost:3000/users/book/category', {
@@ -48,7 +48,7 @@ export default {
           }
         })
           .then(response => {
-            console.log(response.data)
+            this.$emit('getBooks', response.data)
           })
       } else {
         this.$axios.get('http://localhost:3000/users/book/bookName', {
@@ -57,7 +57,7 @@ export default {
           }
         })
           .then(response => {
-            console.log(response.data)
+            this.$emit('getBooks', response.data)
           })
       }
     }

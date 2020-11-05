@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'reservation',
-  props: ['searchVal'],
+  props: ['searchVal', 'books', 'book'],
   data () {
     return {
       form: {
@@ -38,10 +38,10 @@ export default {
     }
   },
   watch: {
+    searchVal: function (val) {
+      this.form.bookId = val.searchName
+    },
     form: {
-      searchVal: function (val) {
-        console.log(val + 'In reservation')
-      },
       handler: function (val, oldVal) {
         if (val.userId === '') {
           this.checkUserId.iClass = 'el-icon-warning-outline'
@@ -87,19 +87,7 @@ export default {
         .catch(error => {
           alert(error)
         })
-    },
-    debounce: function (func, delay) {
-      let timer
-      return function (...args) {
-        if (timer) {
-          clearTimeout(timer)
-        }
-        timer = setTimeout(() => {
-          func.apply(this, args)
-        }, delay)
-      }
     }
-
   }
 }
 </script>
