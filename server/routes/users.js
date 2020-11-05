@@ -7,7 +7,7 @@ router.get('/', function (ctx, next) {
 })
 
 /**
- * 查询书籍：根据出版社
+ * 根据出版社查询书籍
  */
 router.get('/book/publisher', async ctx => {
   const books =
@@ -27,10 +27,7 @@ router.post('/book/reservation', async ctx => {
 })
 
 /**
- * @author lqz
- * @param  
- * @returns JSON
- * @description 根据类型获取图书
+ * 根据类型获取图书
  */
 router.get('/book/category', async ctx => {
   const category = ctx.query.category
