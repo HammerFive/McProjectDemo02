@@ -48,9 +48,21 @@ const getUserInfo = async function (userId) {
   return await mysql.query(selectSql.SELECT_USER_ID, [userId])
 }
 
+/**
+* @function 获取图书信息
+* @description 获取库中所有图书信息
+* @param null
+* @return bookList
+* @author Zhang Sheng 4/11/2020
+*/
+async function getAllBook(){
+  return await mysql.query(sql.getAllBook)
+}
+
 module.exports = {
   getUserInfo,
   getBookByPublisher,
   getBookByCategory,
-  getBookByName
+  getBookByName,
+  getAllBook
 }

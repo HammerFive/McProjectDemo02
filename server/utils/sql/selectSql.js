@@ -33,10 +33,21 @@ const SELECT_BOOKS_BY_CATEGORY =
 'FROM book b,publisher p,category c ' +
 'WHERE b.publisher_id = p.id and b.category_id = c.id and c.name = ? and b.removed = 0'
 
+/**
+ * @author:zs
+ * @description:查询所有图书
+ */
+const SELECT_BOOKS_ALL =
+'SELECT a.id, a.name, a.storage, a.author, a.digest, a.cover_url, b.name as publisher, c.name as category ' +
+'FROM book a,publisher b,category c '
+'WHERE a.publisher_id = b.id and a.category_id = c.id and a.removed = 0'
+
+
 module.exports = {
   SELECT_BOOKS_BY_BOOKNAME,
   SELECT_BOOKS_BY_PUBLISHER,
   SELECT_BOOKS_BY_CATEGORY,
   SELECT_BOOK_STOREGE,
-  SELECT_USER_ID
+  SELECT_USER_ID,
+  SELECT_BOOKS_ALL
 }
