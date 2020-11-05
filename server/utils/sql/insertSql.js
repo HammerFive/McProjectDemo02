@@ -7,4 +7,4 @@ const INSERT_RESERVASTION = 'insert into `borrow` (book_id, user_id, borrow_date
 
 // 添加图书 wy
 const INSERT_BOOK =
-  'INSERT INTO `Book`(name,publisher_id,clazz_id,number,author,exist,digest,cover)VALUES(?,?,?,?,?,?,?,?)'
+  'INSERT INTO `Book`(name,publisher_id,category_id,number,author,exist,digest,cover)VALUES(?,?,?,?,?,?,?,?)'
