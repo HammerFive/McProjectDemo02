@@ -19,8 +19,8 @@
             <el-option label="科技" value="2"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item prop="number" label="数量">
-        <el-input v-model="form.number"></el-input>
+      <el-form-item prop="storage" label="数量">
+        <el-input v-model="form.storage"></el-input>
       </el-form-item>
       <el-form-item prop="digest" label="摘要" class="digest">
         <el-input v-model="form.digest" type="textarea"></el-input>
@@ -37,15 +37,16 @@
 <script>
 export default {
   name: 'Bookupdate',
+  props: ['searchVal', 'books', 'book'],
   data () {
     return {
       form: {
-        name: '',
-        author: '',
+        name: this.book.name,
+        author: this.book.author,
         publisher_id: undefined,
-        clazz_id: undefined,
-        number: undefined,
-        digest: ''
+        category_id: undefined,
+        storage: this.book.storage,
+        digest: this.book.digest
       },
       rules: {
         name: [

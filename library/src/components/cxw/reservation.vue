@@ -1,8 +1,8 @@
 <template>
   <div class="mySearch">
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="图书ID">
-        <el-input v-model="form.bookId"></el-input>
+      <el-form-item label="图书名">
+        <el-input v-model="form.bookName" disabled></el-input>
       </el-form-item>
       <el-form-item label="用户ID">
         <el-input v-model="form.userId"></el-input>
@@ -26,7 +26,8 @@ export default {
   data () {
     return {
       form: {
-        bookId: '',
+        bookName: this.book.name,
+        bookId: this.book.id,
         userId: ''
       },
       timer: null,
@@ -77,12 +78,19 @@ export default {
   },
   methods: {
     onSubmit: function () {
+      const that = this
       this.$axios.post('http://localhost:3000/users/book/reservation', {
         bookId: this.form.bookId,
         userId: this.form.userId
       })
-        .then(response => {
+        .then(function (response) {
           alert('借书成功')
+          that.$axios.get('http://localhost:3000/users/books')
+            .then(function (response) {
+              that.$emit('getBooks', response.data)
+              that.$emit('putBook', '')
+              that.$router.push('/books')
+            })
         })
         .catch(error => {
           alert(error)

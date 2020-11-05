@@ -9,6 +9,7 @@
       @getSearchVal="showSearchVal"
       @getBooks="showBooks"
       @getBook="showBook"
+      @putBook="clearBook"
       />
     </div>
     <Footer></Footer>
@@ -40,6 +41,9 @@ export default {
     },
     showBook: function (val) {
       this.book = val
+    },
+    clearBook: function (val) {
+      this.book = ''
     }
   }
 }

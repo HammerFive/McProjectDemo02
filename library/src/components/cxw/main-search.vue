@@ -39,7 +39,8 @@ export default {
           }
         })
           .then(response => {
-            this.$emit('getBooks', response.data)
+            this.$emit('getBooks', response.data.books)
+            this.$router.push('/books')
           })
       } else if (this.formInline.type === 'class') {
         this.$axios.get('http://localhost:3000/users/book/category', {
@@ -48,7 +49,8 @@ export default {
           }
         })
           .then(response => {
-            this.$emit('getBooks', response.data)
+            this.$emit('getBooks', response.data.books)
+            this.$router.push('/books')
           })
       } else {
         this.$axios.get('http://localhost:3000/users/book/bookName', {
@@ -57,7 +59,8 @@ export default {
           }
         })
           .then(response => {
-            this.$emit('getBooks', response.data)
+            this.$emit('getBooks', response.data.books)
+            this.$router.push('/books')
           })
       }
     }

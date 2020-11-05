@@ -91,4 +91,11 @@ router.get('/user', async ctx => {
   }
   ctx.response.body = result
 })
+
+/**
+ * 获取用户
+ */
+router.get('/books', async ctx => {
+  ctx.body = await selectService.getAllBook()
+})
 module.exports = router

@@ -36,160 +36,50 @@
       label="出版社"
       width="165">
     </el-table-column>
-    <el-table-column
+    <!-- <el-table-column
       prop="price"
       label="价格"
       width="165">
-    </el-table-column>
+    </el-table-column> -->
     <el-table-column
       prop="storage"
-      label="数量"
+      label="库存"
       width="165">
     </el-table-column>
     <el-table-column
-      width="175">
-      <el-button round>
+      label="操作"
+      width="240"
+      show-overflow-tooltip>
+      <template slot-scope="scope">
+        <el-button @click="toManage(scope.row)" round>
         编辑
-      </el-button>
-    </el-table-column>
-    <el-table-column
-      width="175">
-      <el-button round>
+        </el-button>
+        <el-button @click="toBorrow(scope.row)" round>
         借书
-      </el-button>
+        </el-button>
+      </template>
     </el-table-column>
   </el-table>
 </template>
 
 <script>
 export default {
+  name: 'book-list',
+  props: ['searchVal', 'books', 'book'],
   data () {
     return {
-      bookList: [{
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: '时间简史',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }, {
-        id: 1,
-        name: 'end',
-        author: '霍金',
-        category: '小说',
-        publisher: '西安出版社',
-        price: 10,
-        storage: 20
-      }]
+      bookList: this.books
     }
   },
   methods: {
-
+    toManage: function (val) {
+      this.$emit('getBook', val)
+      this.$router.push('/bookupdate')
+    },
+    toBorrow: function (val) {
+      this.$emit('getBook', val)
+      this.$router.push('/reservation')
+    }
   }
 }
 </script>
