@@ -1,3 +1,10 @@
+<!--
+ * @FileDescription: 更新图书和删除图书的功能
+ * @Author: wy
+ * @Date: 2020年11月5日
+ * @LastEditors: wy
+ * @LastEditTime: 2020年11月5日
+ -->
 <template>
     <el-form class="Addbook_container update_color" ref="form" :model="form" :rules="rules" label-width="70px">
       <el-form-item prop="name" label="书名">
@@ -52,10 +59,10 @@ export default {
         id: this.book.id,
         name: this.book.name,
         author: this.book.author,
-        publisher: this.book.publisher,
+        // publisher: this.book.publisher,
         publisher_id: this.book.publisher_id,
         category_id: this.book.category_id,
-        category: this.book.category,
+        // category: this.book.category,
         storage: this.book.storage,
         digest: this.book.digest
       },

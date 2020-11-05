@@ -1,3 +1,10 @@
+<!--
+ * @FileDescription: 添加一本新图书的功能
+ * @Author: wy
+ * @Date: 2020年11月5日
+ * @LastEditors: wy
+ * @LastEditTime: 2020年11月5日
+ -->
 <template>
     <el-form class="Addbook_container" ref="form" :model="form" :rules="rules" label-width="70px">
       <el-form-item prop="name" label="书名">
