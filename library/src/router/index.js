@@ -4,6 +4,10 @@ import HelloWorld from '@/components/HelloWorld'
 import index from '@/components/index'
 import MainSearch from '@/components/MainSearch'
 import Borrow from '@/components/Borrow'
+import Bookadd from '@/components/Bookadd'
+import Bookupdate from '@/components/Bookupdate'
+import Search from '@/components/Search'
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +24,21 @@ export default new Router({
     },
     {
       path: '/search',
+      name: 'Search',
+      component: Search
+    },
+    {
+      path: '/bookadd',
+      name: 'Bookadd',
+      component: Bookadd
+    },
+    {
+      path: '/bookupdate',
+      name: 'Bookupdate',
+      component: Bookupdate
+    },
+    {
+      path: '/mainsearch',
       name: 'MainSearch',
       component: MainSearch
     },

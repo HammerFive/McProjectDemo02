@@ -6,13 +6,23 @@ const updateSql = require('../utils/sql/updateSql.js')
 * @function 更新图书信息
 * @description 添加图书
 * @param book
-* @return successmessage
+* @return 添加结果
 * @author Wang Ying 4/11/2020
  */
-const addBook = function (book) {
-  return mysql.query(sql.addBook,
-    [book.name, book.publisher_id, book.category_id, book.number,
-      book.author, 1, book.digest, book.cover])
+async function addBook (book) {
+  return await mysql.query(
+    insertSql.INSERT_BOOK,
+    [
+      book.name,
+      book.publisher_id,
+      book.category_id,
+      book.storage,
+      book.author,
+      0,
+      book.digest,
+      book.cover_url
+    ]
+  )
 }
 
 /**
