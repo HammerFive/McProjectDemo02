@@ -26,9 +26,13 @@ export default {
       }
     }
   },
+  watch: {
+
+  },
   methods: {
     search: function () {
       if (this.formInline.type === 'publisher') {
+        this.$emit('getMessage', this.formInline)
         this.$axios.get('http://localhost:3000/users/book/publisher', {
           params: {
             publisherName: this.formInline.searchName

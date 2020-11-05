@@ -92,9 +92,9 @@ export default {
 <style scoped>
 .Addbook_container{
   width:700px;
-  height:500px;
-  background-color:#d7e5f1;
-  border-radius: 6px;
+  height:460px;
+  box-shadow: 0 2px 4px rgba(207, 174, 174, 0.12), 0 0 6px rgba(0, 0, 0, .04);
+  border-radius: 4px;
   margin-top:30px;
   margin-left:30%;
   margin-bottom:30px;
@@ -108,5 +108,6 @@ export default {
 }
 .btn{
   float: right;
+  padding-bottom: 20px;
 }
 </style>

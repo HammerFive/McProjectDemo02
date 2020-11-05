@@ -22,6 +22,7 @@
 <script>
 export default {
   name: 'reservation',
+  props: ['searchVal'],
   data () {
     return {
       form: {
@@ -38,6 +39,9 @@ export default {
   },
   watch: {
     form: {
+      searchVal: function (val) {
+        console.log(val + 'In reservation')
+      },
       handler: function (val, oldVal) {
         if (val.userId === '') {
           this.checkUserId.iClass = 'el-icon-warning-outline'

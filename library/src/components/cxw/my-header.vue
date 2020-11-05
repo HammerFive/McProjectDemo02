@@ -9,7 +9,7 @@
     <el-menu id="navMenu" style="float:left" :default-active="this.$router.path" router class="el-menu-demo" mode="horizontal" @select="handleSelect">
       <el-menu-item index="/mainSearch">查询</el-menu-item>
       <el-menu-item index="/books">书库</el-menu-item>
-      <el-menu-item index="/manage">管理</el-menu-item>
+      <el-menu-item index="/bookupdate">管理</el-menu-item>
       <el-menu-item index="/reservation">借书</el-menu-item>
     </el-menu>
   </div>
