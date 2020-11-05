@@ -28,14 +28,15 @@ const updateBook = function (book) {
 * @function 删除图书信息
 * @description 根据唯一标识bookId删除书籍
 * @param bookId
-* @return
+* @return message
 * @author Zhang Sheng 4/11/2020
 */
 async function deleteBook (bookId) {
-  return await mysql.query(
+  const result = await mysql.query(
     deleteSql.DELETE_BOOK_BY_ID,
     [bookId]
   )
+  return result
 }
 
 module.exports = {

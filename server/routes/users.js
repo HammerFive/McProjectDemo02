@@ -99,3 +99,26 @@ router.get('/books', async ctx => {
   ctx.body = await selectService.getAllBook()
 })
 module.exports = router
+
+/**
+ * 获取所有图书
+ */
+router.get('/book', async ctx => {
+  const books = await selectService.getAllBook()
+  ctx.response.body = {
+    books,
+    code: 1
+  }
+})
+
+/**
+ * 根据Id删除图书
+ */
+router.delete('/book', async (ctx) => {
+  const bookId = ctx.request.body
+  await updateService.deleteBook(bookId)
+  ctx.response.body = {
+    msg: 'delete book successfully!',
+    code: 1
+  }
+})
