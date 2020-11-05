@@ -8,7 +8,7 @@
       </el-form-item>
        <!--出版社选择器-->
       <el-form-item prop="publisher_id" label="出版社">
-        <el-select v-model="form.publisher_id" filterable placeholder="选择出版社">
+        <el-select v-model="publisher_id" filterable placeholder="选择出版社">
         <el-option
           v-for="item in publisher"
           :key="item.value"
@@ -19,7 +19,7 @@
       </el-form-item>
       <!--书类别选择器-->
       <el-form-item prop="category_id" label="分类">
-        <el-select v-model="form.category" placeholder="请选择分类">
+        <el-select v-model="category_id" placeholder="请选择分类">
           <el-option
           v-for="item in category"
           :key="item.value"
@@ -58,6 +58,8 @@ export default {
         storage: this.book.storage,
         digest: this.book.digest
       },
+      publisher_id: this.book.publisher,
+      category_id: this.book.category,
       rules: {
         name: [
           { required: true, message: '请输入书', trigger: 'blur' }
@@ -110,8 +112,13 @@ export default {
     updatebook (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log(this.form)
-          this.axios.put('http://localhost:3000/users/book', this.form).then(res => {
+          if (this.publisher_id.length < 3) {
+            this.form.publisher_id = this.publisher_id
+          }
+          if (this.category_id.length < 3) {
+            this.form.category_id = this.category_id
+          }
+          this.$axios.put('http://localhost:3000/users/book', this.form).then(res => {
             console.log(res.data)
             if (res.data.code === 1) alert('添加成功!')
             else alert('添加失败')
