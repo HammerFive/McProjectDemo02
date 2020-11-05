@@ -4,8 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import index from '@/components/index'
 import MainSearch from '@/components/MainSearch'
 import Borrow from '@/components/Borrow'
-import Bookadd from '@/components/Bookadd'
-import Bookupdate from '@/components/Bookupdate'
+import Bookadd from '@/components/wy/book_add'
+import Bookupdate from '@/components/wy/book_update'
 import Search from '@/components/Search'
 
 Vue.use(Router)
