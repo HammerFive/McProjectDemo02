@@ -1,8 +1,8 @@
 <template>
   <div class="mySearch">
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="图书ID">
-        <el-input v-model="form.bookId"></el-input>
+      <el-form-item label="图书名">
+        <el-input v-model="form.bookName" disabled></el-input>
       </el-form-item>
       <el-form-item label="用户ID">
         <el-input v-model="form.userId"></el-input>
@@ -22,11 +22,12 @@
 <script>
 export default {
   name: 'reservation',
-  props: ['searchVal'],
+  props: ['searchVal', 'books', 'book'],
   data () {
     return {
       form: {
-        bookId: '',
+        bookName: this.book.name,
+        bookId: this.book.id,
         userId: ''
       },
       timer: null,
@@ -38,10 +39,10 @@ export default {
     }
   },
   watch: {
+    searchVal: function (val) {
+      this.form.bookId = val.searchName
+    },
     form: {
-      searchVal: function (val) {
-        console.log(val + 'In reservation')
-      },
       handler: function (val, oldVal) {
         if (val.userId === '') {
           this.checkUserId.iClass = 'el-icon-warning-outline'
@@ -77,29 +78,24 @@ export default {
   },
   methods: {
     onSubmit: function () {
+      const that = this
       this.$axios.post('http://localhost:3000/users/book/reservation', {
         bookId: this.form.bookId,
         userId: this.form.userId
       })
-        .then(response => {
+        .then(function (response) {
           alert('借书成功')
+          that.$axios.get('http://localhost:3000/users/books')
+            .then(function (response) {
+              that.$emit('getBooks', response.data)
+              that.$emit('putBook', '')
+              that.$router.push('/books')
+            })
         })
         .catch(error => {
           alert(error)
         })
-    },
-    debounce: function (func, delay) {
-      let timer
-      return function (...args) {
-        if (timer) {
-          clearTimeout(timer)
-        }
-        timer = setTimeout(() => {
-          func.apply(this, args)
-        }, delay)
-      }
     }
-
   }
 }
 </script>

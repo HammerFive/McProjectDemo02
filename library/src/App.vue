@@ -2,7 +2,15 @@
   <div id="app">
     <Header></Header>
     <div class="main">
-      <router-view :searchVal="searchVal" @getMessage="showMsg"/>
+      <router-view
+      :searchVal="searchVal"
+      :books="books"
+      :book="book"
+      @getSearchVal="showSearchVal"
+      @getBooks="showBooks"
+      @getBook="showBook"
+      @putBook="clearBook"
+      />
     </div>
     <Footer></Footer>
   </div>
@@ -15,7 +23,9 @@ export default {
   name: 'App',
   data () {
     return {
-      searchVal: ''
+      searchVal: '',
+      books: '',
+      book: ''
     }
   },
   components: {
@@ -23,8 +33,17 @@ export default {
     Footer
   },
   methods: {
-    showMsg: function (val) {
+    showSearchVal: function (val) {
       this.searchVal = val
+    },
+    showBooks: function (val) {
+      this.books = val
+    },
+    showBook: function (val) {
+      this.book = val
+    },
+    clearBook: function (val) {
+      this.book = ''
     }
   }
 }

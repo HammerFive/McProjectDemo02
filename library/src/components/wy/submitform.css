@@ -1,8 +1,8 @@
 .Addbook_container{
   width:680px;
   height:480px;
-  background-color:#b3d6d4;
-  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(207, 174, 174, 0.12), 0 0 6px rgba(0, 0, 0, .04);
+  border-radius: 4px;
   margin-top:30px;
   margin-bottom:30px;
   padding-top:80px;
@@ -15,7 +15,4 @@
 }
 .btn{
   float: right;
-}
-.update_color{
-  background-color:#e6eee6
 }

@@ -8,7 +8,7 @@
       </el-form-item>
        <!--出版社选择器-->
       <el-form-item prop="publisher_id" label="出版社">
-        <el-select v-model="form.publisher_id" filterable placeholder="选择出版社">
+        <el-select v-model="publisher_id" filterable placeholder="选择出版社">
         <el-option
           v-for="item in publisher"
           :key="item.value"
@@ -19,7 +19,7 @@
       </el-form-item>
       <!--书类别选择器-->
       <el-form-item prop="category_id" label="分类">
-        <el-select v-model="form.category_id" placeholder="请选择分类">
+        <el-select v-model="category_id" placeholder="请选择分类">
           <el-option
           v-for="item in category"
           :key="item.value"
@@ -45,17 +45,21 @@
 <script>
 export default {
   name: 'book_update',
+  props: ['searchVal', 'books', 'book'],
   data () {
     return {
       form: {
-        id: undefined,
-        name: '',
-        author: '',
-        publisher_id: undefined,
-        category_id: undefined,
-        storage: undefined,
-        digest: ''
+        name: this.book.name,
+        author: this.book.author,
+        publisher: this.book.publisher,
+        publisher_id: this.book.publisher_id,
+        category_id: this.book.category_id,
+        category: this.book.category,
+        storage: this.book.storage,
+        digest: this.book.digest
       },
+      publisher_id: this.book.publisher,
+      category_id: this.book.category,
       rules: {
         name: [
           { required: true, message: '请输入书', trigger: 'blur' }
@@ -109,7 +113,12 @@ export default {
     updatebook (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log(this.form)
+          if (this.publisher_id.length < 3) {
+            this.form.publisher_id = this.publisher_id
+          }
+          if (this.category_id.length < 3) {
+            this.form.category_id = this.category_id
+          }
           this.$axios.put('http://localhost:3000/users/book', this.form).then(res => {
             console.log(res.data)
             if (res.data.code === 1) alert('添加成功!')

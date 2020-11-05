@@ -35,8 +35,8 @@ async function addBook (book) {
 * @author Chen Xiaowu 3/11/2020
  */
 async function borrowBook (bookId, userId) {
-  let result = await mysql.query(selectSql.SELECT_BOOK_STOREGE, [bookId])
-  if (result[0].number > 0) {
+  const result = await mysql.query(selectSql.SELECT_BOOK_STOREGE, [bookId])
+  /*   if (result[0].storage > 0) {
     const date = new Date().toLocaleDateString()
     await mysql.query(insertSql.INSERT_RESERVASTION, [bookId, userId, date])
       .then(async (data) => {
@@ -47,8 +47,17 @@ async function borrowBook (bookId, userId) {
         console.log(error)
         result = { msg: 'borrow book failed!', code: 0 }
       })
+  } */
+  if (result[0].storage > 0) {
+    const date = new Date().toLocaleDateString()
+    try {
+      await mysql.query(insertSql.INSERT_RESERVASTION, [bookId, userId, date])
+      await mysql.query(updateSql.UPDATE_BOOK_RESERVASTION, [bookId])
+    } catch (error) {
+      console.log(error)
+    }
+    return result
   }
-  return result
 }
 
 module.exports = {

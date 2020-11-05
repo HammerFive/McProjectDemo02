@@ -43,7 +43,7 @@
 <script>
 import Publisher from '@/components/wy/book_update'
 export default {
-  name: 'book_add',
+  // name: 'book_add',
   data () {
     return {
       publisher: Publisher.data().publisher,

@@ -6,7 +6,7 @@ import Bookupdate from '@/components/wy/book_update'
 import MainSearch from '@/components/cxw/main-search'
 import Reservation from '@/components/cxw/reservation'
 import Search from '@/components/cxw/search'
-
+import BookList from '@/components/lqz/book-list'
 Vue.use(Router)
 
 export default new Router({
@@ -40,6 +40,11 @@ export default new Router({
       path: '/reservation',
       name: 'reservation',
       component: Reservation
+    },
+    {
+      path: '/books',
+      name: 'book-list',
+      component: BookList
     }
   ]
 })
