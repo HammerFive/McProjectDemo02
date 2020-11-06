@@ -1,3 +1,10 @@
+<!--
+ * @FileDescription: 添加一本新图书的功能
+ * @Author: wy
+ * @Date: 2020年11月5日
+ * @LastEditors: wy
+ * @LastEditTime: 2020年11月5日
+ -->
 <template>
     <el-form class="Addbook_container" ref="form" :model="form" :rules="rules" label-width="70px">
       <el-form-item prop="name" label="书名">
@@ -27,7 +34,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="storage" label="数量">
-        <el-input v-model="form.storage"></el-input>
+        <el-input v-model.number="form.storage"></el-input>
       </el-form-item>
       <el-form-item prop="digest" label="摘要" class="digest">
         <el-input v-model="form.digest" type="textarea"></el-input>
@@ -41,15 +48,11 @@
 </template>
 
 <script>
-import Publisher from '@/components/wy/book_update'
-console.log(Publisher)
 export default {
   name: 'book_add',
+  props: ['publisher', 'category', 'rules'],
   data () {
     return {
-      publisher: Publisher.data().publisher,
-      category: Publisher.data().category,
-      rules: Publisher.data().rules,
       form: {
         name: '',
         author: '',
