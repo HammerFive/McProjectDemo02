@@ -29,7 +29,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="storage" label="数量">
-        <el-input v-model="form.storage"></el-input>
+        <el-input v-model.number="form.storage"></el-input>
       </el-form-item>
       <el-form-item prop="digest" label="摘要" class="digest">
         <el-input v-model="form.digest" type="textarea"></el-input>
@@ -52,11 +52,13 @@ export default {
         name: this.book.name,
         author: this.book.author,
         publisher: this.book.publisher,
-        publisher_id: this.book.publisher_id,
-        category_id: this.book.category_id,
+        publisher_id: +this.book.publisher_id,
+        category_id: +this.book.category_id,
         category: this.book.category,
         storage: this.book.storage,
-        digest: this.book.digest
+        digest: this.book.digest,
+        cover_url: this.book.cover_url,
+        id: this.book.id
       },
       publisher_id: this.book.publisher,
       category_id: this.book.category,
@@ -111,18 +113,26 @@ export default {
   },
   methods: {
     updatebook (formName) {
+      const that = this
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          if (this.publisher_id.length < 3) {
+          if (!isNaN(this.publisher_id)) {
             this.form.publisher_id = this.publisher_id
           }
-          if (this.category_id.length < 3) {
+          if (!isNaN(this.category_id)) {
             this.form.category_id = this.category_id
           }
           this.$axios.put('http://localhost:3000/users/book', this.form).then(res => {
             console.log(res.data)
-            if (res.data.code === 1) alert('添加成功!')
-            else alert('添加失败')
+            if (res.data.code === 1) {
+              alert('添加成功!')
+              that.$axios.get('http://localhost:3000/users/books')
+                .then(function (response) {
+                  that.$emit('getBooks', response.data)
+                  that.$emit('putBook', '')
+                  that.$router.push('/books')
+                })
+            } else alert('添加失败')
           })
         } else {
           console.log('表单提交错误!!')
