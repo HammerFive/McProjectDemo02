@@ -100,7 +100,11 @@ export default {
       })
     },
     deletebook () {
-      this.$axios.delete(`http://localhost:3000/data/${this.form.id}`).then(res => {})
+      this.$axios.delete(`http://localhost:3000/users/book/${this.form.id}`).then(res => {
+        console.log(res)
+        if (res.data.code === 1) alert('删除成功!')
+        else alert('删除失败')
+      })
     }
   }
 }

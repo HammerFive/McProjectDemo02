@@ -31,7 +31,7 @@ const updateBook = function (book) {
 * @return message
 * @author Zhang Sheng 4/11/2020
 */
-async function deleteBook (bookId) {
+async function deleteBookById (bookId) {
   const result = await mysql.query(
     deleteSql.DELETE_BOOK_BY_ID,
     [bookId]
@@ -41,5 +41,5 @@ async function deleteBook (bookId) {
 
 module.exports = {
   updateBook,
-  deleteBook
+  deleteBookById
 }

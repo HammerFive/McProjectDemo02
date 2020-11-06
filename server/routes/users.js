@@ -113,11 +113,13 @@ router.get('/book', async ctx => {
 /**
  * 根据Id删除图书
  */
-router.post('/book', async (ctx) => {
-  const bookId = ctx.request.body
-  await updateService.deleteBook(bookId)
-  ctx.response.body = {
-    msg: 'delete book successfully!',
-    code: 1
-  }
+// 动态路由  -----------------------------------------------------------------------
+router.delete('/book/:bid', async (ctx) => {
+  // console.log(ctx.params); //{ bid: '123' } //获取动态路由的数据
+  const results = await await updateService.deleteBookById(ctx.params.bid)
+  console.log(results)
+  if (results.affectedRows === 1) {
+    ctx.response.body = { msg: 'successful', code: 1 }
+  } else ctx.response.body = { msg: 'Book already exist', code: 0 }
+  // console.log(results);
 })
