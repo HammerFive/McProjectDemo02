@@ -56,16 +56,7 @@ export default {
   data () {
     return {
       form: {
-        id: this.book.id,
-        name: this.book.name,
-        author: this.book.author,
-        publisher: this.book.publisher,
-        publisher_id: this.book.publisher_id,
-        category_id: this.book.category_id,
-        category: this.book.category,
-        storage: this.book.storage,
-        digest: this.book.digest,
-        cover_url: this.book.cover_url
+        ...this.book
       },
       publisher_id: this.book.publisher,
       category_id: this.book.category
@@ -78,9 +69,23 @@ export default {
         if (valid) {
           if (!isNaN(this.publisher_id)) {
             this.form.publisher_id = this.publisher_id
+          } else {
+            for (const item of this.publisher) {
+              if (item.label === this.form.publisher) {
+                this.form.publisher_id = +item.value
+                break
+              }
+            }
           }
           if (!isNaN(this.category_id)) {
             this.form.category_id = this.category_id
+          } else {
+            for (const item of this.category) {
+              if (item.label === this.form.category) {
+                this.form.category_id = +item.value
+                break
+              }
+            }
           }
           this.$axios.put('http://localhost:3000/users/book', this.form).then(res => {
             console.log(res.data)
@@ -100,7 +105,20 @@ export default {
       })
     },
     deletebook () {
-      this.$axios.delete(`http://localhost:3000/data/${this.form.id}`).then(res => {})
+      const that = this
+      this.$axios.put(`http://localhost:3000/users/book/drop?id=${this.form.id}`).then(response => {
+        if (response.data.code === 1) {
+          alert(response.data.msg)
+          that.$axios.get('http://localhost:3000/users/books')
+            .then(function (response) {
+              that.$emit('getBooks', response.data)
+              that.$emit('putBook', '')
+              that.$router.push('/books')
+            })
+        } else {
+          alert('delete failed')
+        }
+      })
     }
   }
 }

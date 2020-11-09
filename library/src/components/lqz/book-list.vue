@@ -61,9 +61,20 @@
 export default {
   name: 'book-list',
   props: ['searchVal', 'books', 'book'],
+  created: function () {
+    const that = this
+    if (this.books === '') {
+      this.$axios.get('http://localhost:3000/users/books')
+        .then(function (response) {
+          that.bookList = response.data
+          that.$emit('getBooks', response.data)
+          that.$emit('putBook', '')
+        })
+    }
+  },
   data () {
     return {
-      bookList: this.books
+      bookList: this.books || null
     }
   },
   methods: {

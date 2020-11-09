@@ -10,6 +10,7 @@
       <el-menu-item index="/mainSearch">查询</el-menu-item>
       <el-menu-item index="/books">书库</el-menu-item>
       <el-menu-item index="/bookupdate">管理</el-menu-item>
+      <el-menu-item index="/bookadd">新添</el-menu-item>
       <el-menu-item index="/reservation">借书</el-menu-item>
     </el-menu>
   </div>

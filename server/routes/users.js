@@ -12,7 +12,8 @@ router.get('/book/publisher', async ctx => {
     await selectService.getBookByPublisher(ctx.request.query.publisherName)
   ctx.response.body = {
     books,
-    code: 1
+    code: 1,
+    error: '1'
   }
 })
 
@@ -113,8 +114,8 @@ router.get('/book', async ctx => {
 /**
  * 根据Id删除图书
  */
-router.post('/book', async (ctx) => {
-  const bookId = ctx.request.body
+router.put('/book/drop', async (ctx) => {
+  const bookId = ctx.request.query.id
   await updateService.deleteBook(bookId)
   ctx.response.body = {
     msg: 'delete book successfully!',

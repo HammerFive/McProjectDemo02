@@ -63,12 +63,6 @@ export default {
         author: [
           { required: true, message: '请输入作者', trigger: 'blur' }
         ],
-        publisher_id: [
-          { required: true, message: '请选择出版社', trigger: 'change' }
-        ],
-        category_id: [
-          { required: true, message: '请选择类别', trigger: 'change' }
-        ],
         storage: [
           { required: true, message: '请输入添加数量', trigger: 'blur' },
           { type: 'number', message: '数量必须为数字', trigger: 'blur' }

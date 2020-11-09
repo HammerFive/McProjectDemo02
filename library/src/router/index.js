@@ -6,10 +6,16 @@ import MainSearch from '@/components/cxw/main-search'
 import Reservation from '@/components/cxw/reservation'
 import Search from '@/components/cxw/search'
 import BookList from '@/components/lqz/book-list'
+import Index from '@/components/cxw/index'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'index',
+      component: Index
+    },
     {
       path: '/search',
       name: 'search',
