@@ -67,7 +67,7 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$axios.post('http://localhost:3000/users/book', this.form).then(res => {
+          this.$axios.post('/users/book', this.form).then(res => {
             console.log(res.data)
             if (res.data.code === 1) alert('添加成功!')
             else alert('添加失败' + res.data.msg)

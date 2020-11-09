@@ -56,7 +56,7 @@ export default {
           clearTimeout(this.timer)
         }
         this.timer = setTimeout(() => {
-          this.$axios.get('http://localhost:3000/users/user', {
+          this.$axios.get('/users/user', {
             params: {
               userId: this.form.userId
             }
@@ -79,13 +79,13 @@ export default {
   methods: {
     onSubmit: function () {
       const that = this
-      this.$axios.post('http://localhost:3000/users/book/reservation', {
+      this.$axios.post('/users/book/reservation', {
         bookId: this.form.bookId,
         userId: this.form.userId
       })
         .then(function (response) {
           alert('借书成功')
-          that.$axios.get('http://localhost:3000/users/books')
+          that.$axios.get('/users/books')
             .then(function (response) {
               that.$emit('getBooks', response.data)
               that.$emit('putBook', '')

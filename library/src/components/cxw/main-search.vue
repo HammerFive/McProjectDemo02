@@ -33,7 +33,7 @@ export default {
     search: function () {
       this.$emit('getSearchVal', this.formInline)
       if (this.formInline.type === 'publisher') {
-        this.$axios.get('http://localhost:3000/users/book/publisher', {
+        this.$axios.get('/users/book/publisher', {
           params: {
             publisherName: this.formInline.searchName
           }
@@ -43,7 +43,7 @@ export default {
             this.$router.push('/books')
           })
       } else if (this.formInline.type === 'class') {
-        this.$axios.get('http://localhost:3000/users/book/category', {
+        this.$axios.get('/users/book/category', {
           params: {
             category: this.formInline.searchName
           }
@@ -53,7 +53,7 @@ export default {
             this.$router.push('/books')
           })
       } else {
-        this.$axios.get('http://localhost:3000/users/book/bookName', {
+        this.$axios.get('/users/book/bookName', {
           params: {
             name: this.formInline.searchName
           }
