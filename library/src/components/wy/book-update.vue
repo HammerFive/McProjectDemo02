@@ -82,11 +82,11 @@ export default {
           if (!isNaN(this.category_id)) {
             this.form.category_id = this.category_id
           }
-          this.$axios.put('http://localhost:3000/users/book', this.form).then(res => {
+          this.$axios.put('/users/book', this.form).then(res => {
             console.log(res.data)
             if (res.data.code === 1) {
               alert('添加成功!')
-              that.$axios.get('http://localhost:3000/users/books')
+              that.$axios.get('/users/books')
                 .then(function (response) {
                   that.$emit('getBooks', response.data)
                   that.$emit('putBook', '')
@@ -100,7 +100,7 @@ export default {
       })
     },
     deletebook () {
-      this.$axios.delete(`http://localhost:3000/users/book/${this.form.id}`).then(res => {
+      this.$axios.delete(`/users/book/${this.form.id}`).then(res => {
         console.log(res)
         if (res.data.code === 1) alert('删除成功!')
         else alert('删除失败')
